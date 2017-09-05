@@ -60,14 +60,14 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const DOMNodeCollection = __webpack_require__(1);
+const DOMNodeCollection = __webpack_require__(2);
 
 // Core function
 // selector is a string used to select dom elements
@@ -84,6 +84,15 @@ window.$l = function(arg) {
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(0);
+__webpack_require__(0);
+module.exports = __webpack_require__(3);
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 class DOMNodeCollection {
@@ -199,6 +208,12 @@ class DOMNodeCollection {
 
 module.exports = DOMNodeCollection;
 
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/kennethng/Desktop/W6D4/W6D4/jquery_lite/lib/jquery_lite.js'\n    at Error (native)");
 
 /***/ })
 /******/ ]);
