@@ -60,18 +60,18 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const DOMNodeCollection = __webpack_require__(2);
+const DOMNodeCollection = __webpack_require__(1);
 
 // Core function
 // selector is a string used to select dom elements
-window.$l = function(arg) {
+window.$k = function(arg) {
   let htmlElements;
   if (arg instanceof HTMLElement) {
     htmlElements = [arg];
@@ -84,21 +84,13 @@ window.$l = function(arg) {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(0);
-__webpack_require__(0);
-module.exports = __webpack_require__(3);
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports) {
 
 class DOMNodeCollection {
 
   constructor(htmlElements) {
     this.htmlElements = htmlElements;
+    this.htmlElements.forEach( node => node.callbacks = {} );
 
     this.html = this.html.bind(this);
     this.empty = this.empty.bind(this);
@@ -165,12 +157,29 @@ class DOMNodeCollection {
     return this.htmlElements[0].getAttribute(attrName);
   }
 
-  addClass() {
-
+  addClass(arg) {
+    var cName = this.htmlElements;
+    cName.forEach( function(node) {
+      if (node.className === "") {
+        node.className = arg;
+      } else {
+        node.className += ` ${arg}`;
+      }
+    });
   }
 
-  removeClass() {
-
+  removeClass(arg) {
+    var cName = this.htmlElements;
+    // cName.forEach( function(node) {
+    //   if (node.className === arg) {
+    //     node.className = "";
+    //   } else {
+    //     let arr = node.className.split(" ");
+    //     let index = node.className.split(" ").indexOf(arg);
+    //     node.className = arr.splice(0, index) + arr.splice(index, arr.length);
+    //   }
+    // });
+    cName.forEach( node => node.classList.remove(arg));
   }
 
   find(selector) {
@@ -203,17 +212,29 @@ class DOMNodeCollection {
     return new DOMNodeCollection(res);
   }
 
+  on(eventName, callback) {
+    this.htmlElements.forEach(function(node) {
+      node.addEventListener(eventName, callback);
+      if (!node.callbacks[eventName]) {
+        node.callbacks[eventName] = [callback];
+      } else {
+        node.callbacks[eventName].push(callback);
+      }
+    });
+  }
+
+  off(eventName, callback) {
+    this.htmlElements.forEach(function(node) {
+      node.callbacks.forEach(function(el) {
+        node.removeEventListener(eventName, node.callbacks[eventName][el]);
+      });
+    });
+  }
 
 }
 
 module.exports = DOMNodeCollection;
 
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/kennethng/Desktop/W6D4/W6D4/jquery_lite/lib/jquery_lite.js'\n    at Error (native)");
 
 /***/ })
 /******/ ]);
