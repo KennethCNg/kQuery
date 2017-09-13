@@ -78,7 +78,6 @@ function $k (selector) {
   const funcs = [];
 
   if (typeof(selector) === "string") {
-
     els = document.querySelectorAll(selector);
     for (var i = 0; i < els.length; i++) {
       array.push(els[i]);
@@ -99,7 +98,8 @@ window.$k = $k;
 document.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM loaded");
 
-  const submitButton = $k("button").htmlElements[0];
+  // Add To do //
+  const submitButton = $k("button").htmlElements[3];
   submitButton.addEventListener("click", function(e) {
     e.preventDefault();
     getInput();
@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const todo = $k("input").htmlElements[0].value;
 
     appendInput(todo);
-
     $k("input").htmlElements[0].value = "";
   };
 
@@ -120,153 +119,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let elTodo = document.createTextNode(todo);
 
     li.appendChild(elTodo);
-
     ul.append(li);
   };
 
+
+
+  // Add styling //
+  const styleHeader = $k("button").htmlElements[0];
+  styleHeader.addEventListener("click", function(e) {
+    e.preventDefault();
+    let header = $k("h2");
+    header.addClass("header");
+  });
+
+  const styleInput = $k("button").htmlElements[1];
+  styleInput.addEventListener("click", function(e) {
+    e.preventDefault();
+    let input = $k("input");
+    input.addClass("input");
+  });
+
+  const styleButton = $k("button").htmlElements[2];
+  styleButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    let button = $k("button");
+    button.addClass("button");
+  });
+
 });
-
-
-
-//WINDOW TEST
-
-// window.document.addEventListener("DOMContentLoaded", e => {
-//   let  submitTodoButton = ('.todo_button');
-//
-//   submitTodoButton.on('click', (e) => {
-//
-//
-//     e.preventDefault();
-//
-//     let titleValue = $k('#todo-input-title').els[0].value;
-//     let bodyValue = $k('#todo-textarea-body').els[0].value;
-//
-//     createTodoListItem(titleValue, bodyValue);
-//     $k('#todo-input-title').els[0].value="";
-//     $k('#todo-textarea-body').els[0].value="";
-//   });
-// });
-//
-//
-// window.$k.extend = (...args) => {
-//   args.slice(1).forEach(obj => {
-//     Object.keys(obj).forEach(k => {
-//       args[0][k] = obj[k];
-//     });
-//   });
-//   return args[0];
-// };
-//
-// window.$k.ajax = (options) => {
-//   let defaultOpts = {
-//     method: 'GET',
-//     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-//     data: {},
-//     url: "http://api.giphy.com/v1/gifs/search?q=food&api_key=068e61e473a84c9698874654a0a581f3&limit=5",
-//     success: data => {
-//       console.log("Retrieved Data");
-//       console.log(data);
-//     },
-//     error: err => {
-//       console.error("An error occurred.");
-//     }
-//   };
-//
-//   $k.extend(defaultOpts, options);
-//
-//   const xhr = new XMLHttpRequest();
-//   xhr.open(defaultOpts.method, defaultOpts.url);
-//   xhr.onload = function () {
-//     if (xhr.status >= 200 && xhr.status < 300) {
-//       defaultOpts.success();
-//     } else {
-//       defaultOpts.error();
-//     }
-    // console.log(xhr.status);
-    // console.log(xhr.reponseType);
-    // console.log(xhr.response);
-//   };
-//
-//   xhr.send(defaultOpts.data);
-// };
-// const DOMNodeCollection = require("./dom_node_collection.js");
-// const queue = [];
-//
-// window. = function(arg) {
-//   let htmlElements;
-//   if(arg instanceof HTMLElement){
-//     return new DOMNodeCollection([arg]);
-//   } else if(typeof arg === "function") {
-//     if(document.readyState === 'complete'){
-//       arg();
-//     } else {
-//       queue.push(arg);
-//     }
-//   } else {
-//     let NodeList = document.querySelectorAll(arg);
-//     NodeList = Array.from(NodeList);
-//     return new DOMNodeCollection(NodeList);
-//   }
-// };
-//
-// //extend is a function that merges any number of objects, resulting in all objects
-// .extend = function(obj, ...otherObjs) {
-//   otherObjs.forEach((arg) => {
-//     let keys = Object.key(arg);
-//     keys.forEach( key => {
-//       obj[key] = arg[key];
-//     });
-//   });
-// };
-//
-// function trigger (queueArray) {
-//   queue.forEach(function(callback) {
-//     callback();
-//   });
-// }
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   trigger(queue);
-// });
-//
-//
-// addToQueryString = function(obj) {
-//   let res = "";
-//   for(let prop in obj){
-//     if(obj.hasOwnProperty(prop)){
-//       res += "=" + obj[prop] + "&";
-//     }
-//   }
-//   return res.substring(0, res.length - 1);
-// };
-//
-// .ajax = function(options = {}) {
-//   const defaults = {
-//     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-//     method: "GET",
-//     url: "",
-//     success: () => {},
-//     error: () => {},
-//     data: {},
-//   };
-//   options = .extend(defaults, options);
-//   options.method = options.method.toUpperCase();
-//
-//   if (options.method === "GET"){
-//     options.url += "?" + addToQueryString(options.data);
-//   }
-//   const request = new XMLHttpRequest();
-//   request.open(options.method, options.url, true);
-//   request.onload = e => {
-//
-//     if (request.status >= 200 && request.status < 300) {
-//       options.success(request.response);
-//     } else {
-//       options.error(request.response);
-//     }
-//   };
-//   request.send(JSON.stringify(options.data));
-// };
 
 
 /***/ }),
@@ -363,7 +243,6 @@ class DOMNodeCollection {
   }
 
   find(selector) {
-    debugger;
     const res = [];
     this.htmlElements.forEach(function(el) {
       const matched = el.querySelectorAll(selector);

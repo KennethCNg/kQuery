@@ -2,16 +2,23 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /*background-color: #7289DA;*/
   background-color: white;
   height: 100%;
   width: 100%;
 }
 
+#btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
   border-top: medium solid red;
   border-bottom: medium solid red;
   font-family: 'Encode Sans Condensed', sans-serif;
@@ -22,7 +29,6 @@
 
 .form-wrapper {
   display: flex;
-  /*flex-direction: column;*/
   justify-content: center;
   width: 100%;
 }
@@ -44,6 +50,10 @@
   align-items: center;
 }
 
+#todo-input {
+  border: 1px solid black;
+}
+
 .input {
   display: flex;
   justify-content: center;
@@ -59,7 +69,7 @@
 
 .button {
   display: flex;
-  border: none;
+  border: solid 1px black;
   background: none;
   font-family: 'Encode Sans Condensed', sans-serif;
   font-size: 30px;
@@ -73,6 +83,7 @@
   height: 70vh;
   width: 100%;
 }
+
   li {
     font-family: 'Gloria Hallelujah', cursive;
   }
