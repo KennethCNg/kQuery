@@ -3,30 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script type="text/javascript" src="./dist/bundle.js">
-
-    </script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-    </script>
+    <script type="text/javascript" src="./dist/bundle.js"></script>
   </head>
   <body>
+    <div>
+      What do you need to do?
+      <form id="todo-form">
+      <input id="todo-input">
 
-    <ul id="somethingspecific">
-      <li class="bar">1v1</li>
-      <li class="bar">1v2</li>
-      <li>1v3</li>
-    </ul>
-    <ul>
-      <li class="bar" id="foo">2v1</li>
-      <li>2v2</li>
-      <li>2v3</li>
-    </ul>
+      <button id="todo-button">Create Todo!</button>
+      </input>
+      </form>
 
-    <li id="target">1</li>
-    <li>2</li>
-    <li class="bar">3</li>
-    <input type="checkbox" checked="checked" name="" value="">
-
-    <button>Click</button>
+      <ul id="todo-list"></ul>
+    </div>
   </body>
 </html>
