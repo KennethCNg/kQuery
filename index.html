@@ -4,18 +4,25 @@
     <meta charset="utf-8">
     <title></title>
     <script type="text/javascript" src="./dist/bundle.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" href="./stylesheet/reset.css">
+    <link rel="stylesheet" href="./stylesheet/todo.css">
   </head>
   <body>
-    <div>
-      What do you need to do?
-      <form id="todo-form">
-      <input id="todo-input">
-
-      <button id="todo-button">Create Todo!</button>
-      </input>
+    <div class="outer-div">
+      <h2 class="header">What do you need to do?</h2>
+      <div class="form-wrapper">
+      <form class="form" id="todo-form">
+        <div class="input-wrapper">
+          <input class="input" id="todo-input">
+          </input>
+          <button class="button" id="todo-button">Create Todo!</button>
+        </div>
       </form>
+    </div>
 
-      <ul id="todo-list"></ul>
+      <ul class="ul" id="todo-list"></ul>
     </div>
   </body>
 </html>

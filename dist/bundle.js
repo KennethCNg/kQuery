@@ -70,9 +70,6 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_node_collection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__todos__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__todos___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__todos__);
-
 
 
 function $k (selector) {
@@ -416,12 +413,6 @@ class DOMNodeCollection {
 
 /* harmony default export */ __webpack_exports__["a"] = (DOMNodeCollection);
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/kennethng/Desktop/kQuery/lib/todos.js'\n    at Error (native)");
 
 /***/ })
 /******/ ]);
