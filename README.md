@@ -14,10 +14,8 @@ Download/clone the repo and include the script tag shown below:
 </head>
 ```
 
-Also run `npm install` in order to install dependencies. After installing dependencies, run `npm start`, and you're all ready to go!
-
 ## Core Functionalities
-$k(selector) takes either a string, an HTMLElement or a function.
+`$k(selector)` takes either a string, an HTMLElement or a function.
 
 Passing in a string or HTML element searches the DOM for the argument, and stores them in an array wrapped in a DOMNodeCollection object.
 
