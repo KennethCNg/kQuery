@@ -1,3 +1,7 @@
+[Live link][link]
+
+[link]: http://kennethcng.com/kQuery/
+
 # kQuery
 
 kQuery is a lightweight library built using vanilla JavaScript. The goal was to replicate the important functionalities of jQuery without the fluff.
