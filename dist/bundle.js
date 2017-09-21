@@ -69,24 +69,24 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom_node_collection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_dom_node_collection__ = __webpack_require__(1);
 
 
+const funcs = [];
 function $k (selector) {
   let els;
   const array = [];
-  const funcs = [];
 
   if (typeof(selector) === "string") {
     els = document.querySelectorAll(selector);
     for (var i = 0; i < els.length; i++) {
       array.push(els[i]);
     }
-    return new __WEBPACK_IMPORTED_MODULE_0__dom_node_collection__["a" /* default */](array);
+    return new __WEBPACK_IMPORTED_MODULE_0__lib_dom_node_collection__["a" /* default */](array);
 
   } else if (selector instanceof HTMLElement) {
     els = [selector];
-    return new __WEBPACK_IMPORTED_MODULE_0__dom_node_collection__["a" /* default */](els);
+    return new __WEBPACK_IMPORTED_MODULE_0__lib_dom_node_collection__["a" /* default */](els);
   } else if (selector instanceof Function) {
     funcs.push(selector);
   }
@@ -97,6 +97,11 @@ window.$k = $k;
 
 document.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM loaded");
+
+  // invokes functions when document is ready
+  funcs.forEach(func => {
+    func();
+  });
 
   // Add To do //
   const submitButton = $k("button").htmlElements[3];
@@ -121,8 +126,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     li.appendChild(elTodo);
     ul.append(li);
   };
-
-
 
   // Add styling //
   const styleHeader = $k("button").htmlElements[0];
@@ -187,8 +190,7 @@ class DOMNodeCollection {
       el.innerHTML = "";
     });
   }
-
-// $k("ul").append("<li>LOL</li>")
+  
   append(arg) {
     if (arg instanceof HTMLElement) {
       this.htmlElements.forEach(function(el) {

@@ -1,9 +1,9 @@
-import DOMNodeCollection from './dom_node_collection';
+import DOMNodeCollection from './lib/dom_node_collection';
 
+const funcs = [];
 function $k (selector) {
   let els;
   const array = [];
-  const funcs = [];
 
   if (typeof(selector) === "string") {
     els = document.querySelectorAll(selector);
@@ -25,6 +25,11 @@ window.$k = $k;
 
 document.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM loaded");
+
+  // invokes functions when document is ready
+  funcs.forEach(func => {
+    func();
+  });
 
   // Add To do //
   const submitButton = $k("button").htmlElements[3];
@@ -49,8 +54,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     li.appendChild(elTodo);
     ul.append(li);
   };
-
-
 
   // Add styling //
   const styleHeader = $k("button").htmlElements[0];
